@@ -7,7 +7,7 @@ const textarea = document.querySelector('textarea');
 
 const LOCALSTORAGE_KEY = 'feedback-form-state';
 
-const formData = {};
+const formData = {email:input.value, message:textarea.value};
 
 
 form.addEventListener('input', throttle(onFormMessage, 500));
@@ -20,7 +20,7 @@ function onFormMessage(evt) {
     localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formData));
 }
 
-function onSubmitForm (evt) {
+function onSubmitForm(evt) {
     evt.preventDefault();
 
     evt.currentTarget.reset();
@@ -33,8 +33,8 @@ function textAreaMessage() {
     const response = JSON.parse(saveMsg)
 
     if (response) {
-        input.value = response.email;
-        textarea.value = response.message;
+        input.value = response.email || " ";
+        textarea.value = response.message || " ";
     }
 
 }
