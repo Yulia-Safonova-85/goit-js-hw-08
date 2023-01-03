@@ -6,13 +6,13 @@ const input = document.querySelector('input');
 const textarea = document.querySelector('textarea');
 
 const LOCALSTORAGE_KEY = 'feedback-form-state';
-
+textAreaMessage();
 const formData = {email:input.value, message:textarea.value};
 
 
 form.addEventListener('input', throttle(onFormMessage, 500));
 form.addEventListener('submit', onSubmitForm);
-textAreaMessage();
+
 
 function onFormMessage(evt) {
     formData[evt.target.name] = evt.target.value;
